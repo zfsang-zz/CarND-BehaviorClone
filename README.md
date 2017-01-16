@@ -61,8 +61,9 @@ One version of modified Comma.ai model achieved the best performance over all mo
 
 
 The detailed network structure is listed below.  Basically, I used 3 convolutional layers and 2 dense fully connected layers with random dropout and normalization layers.  First I used the image of the default size 320x160 for direct input, and found it was very slow for the training on my local CPU.  It took more than 40 minutes to finish 1 epoch on CPU, and I do not have a good GPU to play with.  So I decided to resize the images to 64X64 and use a much smaller network structure.  
+
 Layer (type)                     Output Shape          Param #     Connected to
-====================================================================================================
+
 lambda_1 (Lambda)                (None, 64, 64, 3)     0           lambda_input_1[0][0]
 ____________________________________________________________________________________________________
 Conv1 (Convolution2D)            (None, 16, 16, 16)    3088        lambda_1[0][0]
@@ -80,7 +81,7 @@ ________________________________________________________________________________
 Dropout (Dropout)                (None, 1024)          0           Dense1[0][0]
 ____________________________________________________________________________________________________
 Output (Dense)                   (None, 1)             1025        Dropout[0][0]
-====================================================================================================
+
 Total params: 1117809
 
 ## Training
